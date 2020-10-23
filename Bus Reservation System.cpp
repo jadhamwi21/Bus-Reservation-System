@@ -25,7 +25,6 @@ struct Bus
 	string Drivername;
 	string ArrivalTime;
 	string DepartureTime;
-	string TransporationLine;
 	std::vector<Resturaunt> Resturaunts;
 	string Destination;
 	string Seats[32];
@@ -108,7 +107,6 @@ public:
 			cout << "To : ";
 			cin >> s;
 			Temp.Destination += " " + s;
-			Temp.TransporationLine = Temp.Destination.substr(0, Temp.Destination.find(" ")) + " And " + Temp.Destination.substr(Temp.Destination.find(" ") + 1, Temp.Destination.size());
 			std::fill_n(Temp.Seats, 32, "Empty");
 			Buses.push_back(Temp);
 	}
@@ -199,7 +197,7 @@ public:
 				cout << "Deprature Time : " << it->DepartureTime << endl;
 				string From = it->Destination.substr(0, it->Destination.find(" "));
 				cout << "From : " << From << " || ";
-				string To = it->Destination.substr(it->Destination.rfind(" "), it->Destination.length());
+				string To = it->Destination.substr(it->Destination.rfind(" ")+1);
 				cout << "To : " << To << endl;
 
 				int count = 0;
@@ -246,7 +244,7 @@ public:
 			cout << "Deprature Time : " << it->DepartureTime << endl;
 			string From = it->Destination.substr(0, it->Destination.find(" "));
 			cout << "From : " << From << " || ";
-			string To = it->Destination.substr(it->Destination.rfind(" "), it->Destination.length());
+			string To = it->Destination.substr(it->Destination.rfind(" ")+1);
 			cout << "To : " << To << endl;
 		}
 	}
